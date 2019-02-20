@@ -1,3 +1,5 @@
+package com.idanalytics.datacleaner;
+
 public class Utils {
 
     static String postProcessOutput(String output) {

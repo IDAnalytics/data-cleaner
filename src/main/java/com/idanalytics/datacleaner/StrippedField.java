@@ -1,3 +1,4 @@
+package com.idanalytics.datacleaner;
 
 public class StrippedField {
     private String remainder;
