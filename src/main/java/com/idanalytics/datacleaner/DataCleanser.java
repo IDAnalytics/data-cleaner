@@ -1,3 +1,5 @@
+package com.idanalytics.datacleaner;
+
 import java.io.IOException;
 import java.util.Map;
 

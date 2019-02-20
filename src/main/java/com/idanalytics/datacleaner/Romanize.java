@@ -1,3 +1,5 @@
+package com.idanalytics.datacleaner;
+
 // Convert iso8859-15 0x80-0xFF to regular 0x20-0x7F
 
 public class Romanize {

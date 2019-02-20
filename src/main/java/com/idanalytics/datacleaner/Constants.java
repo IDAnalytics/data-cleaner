@@ -1,3 +1,5 @@
+package com.idanalytics.datacleaner;
+
 import java.util.regex.Pattern;
 
 public interface Constants {

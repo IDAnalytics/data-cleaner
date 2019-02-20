@@ -1,3 +1,5 @@
+package com.idanalytics.datacleaner;
+
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
