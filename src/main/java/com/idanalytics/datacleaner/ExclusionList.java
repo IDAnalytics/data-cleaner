@@ -1,7 +1,6 @@
 package com.idanalytics.datacleaner;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,7 +25,7 @@ public class ExclusionList {
      * @throws IOException
      */
     public ExclusionList() throws Exception {
-        URL excusionFileURL = this.getClass(). getResource(EXCLUSION_FILENAME);
+        URL excusionFileURL = ExclusionList.class.getClassLoader().getResource(EXCLUSION_FILENAME);
         exclusions = readExclusionList(Paths.get(excusionFileURL.toURI()));
     }
 
