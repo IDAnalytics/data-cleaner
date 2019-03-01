@@ -1,9 +1,9 @@
 package com.idanalytics.datacleaner;
 
+import java.util.Map;
+
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-
-import java.util.Map;
 
 class Name {
     private boolean valid;

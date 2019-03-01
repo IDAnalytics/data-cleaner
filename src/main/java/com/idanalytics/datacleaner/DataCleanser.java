@@ -1,9 +1,8 @@
 package com.idanalytics.datacleaner;
 
-import java.io.IOException;
 import java.util.Map;
 
-import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.lang3.StringUtils.trim;
 
 public class DataCleanser {
 
