@@ -1,0 +1,6 @@
+# IntelliJ IDEA
+data-cleaner.iml
+.idea/
+
+# Maven
+target/

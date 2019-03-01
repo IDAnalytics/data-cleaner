@@ -1,32 +1,63 @@
 package com.idanalytics.datacleaner;
 
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * ExclusionList maintains patterns of name exclusions
  */
 public class ExclusionList {
 
-    private static final String EXCLUSION_FILENAME = "name.exclusion.file";
+    private static final List<String> exclusionList = Collections.unmodifiableList(Arrays.asList(
+            "ESTATE",
+            "CO",
+            "COMP",
+            "DBA",
+            "CHEMICAL",
+            "ASSOC",
+            "ASSOCIATE",
+            "INC",
+            "INCORPORATED",
+            "TEMPLE",
+            "CENTER",
+            "SCHOOL",
+            "ATT",
+            "ATTN",
+            "SYSTEMS",
+            "SHOP",
+            "OR",
+            "AND",
+            "CAPITAL",
+            "CORP",
+            "CORPORATION",
+            "AUTO",
+            "SALES",
+            "ADVISOR",
+            "COLLEGE",
+            "APPLICATION",
+            "FRAUD",
+            "TESTCASE",
+            "SAMPLE",
+            "TEST",
+            "CARE OF",
+            "CHURCH",
+            "STORE",
+            "HOSPITAL"
+    ));
+
     private List<Pattern> exclusions;
 
     /**
      * Constructs an ExclusionList with default provided exclusion list file
      * @throws IOException
      */
-    public ExclusionList() throws Exception {
-        URL excusionFileURL = ExclusionList.class.getClassLoader().getResource(EXCLUSION_FILENAME);
-        exclusions = readExclusionList(Paths.get(excusionFileURL.toURI()));
+    public ExclusionList() {
+        exclusions = createExclusionList();
     }
 
     /**
@@ -43,14 +74,13 @@ public class ExclusionList {
         return Collections.unmodifiableList(exclusions);
     }
 
-    private List<Pattern> readExclusionList(Path exclusionFile) throws IOException {
-        List<Pattern> exclusions = new ArrayList<>();
-        try (Stream<String> stream = Files.lines(exclusionFile)) {
-            List<Pattern> patterns = stream.map(pattern ->
-                    Pattern.compile("\\b" + pattern.trim().toUpperCase() + "\\b")).collect(Collectors.toList()
-            );
-            exclusions.addAll(patterns);
-        }
-        return exclusions;
+    private static List<Pattern> createExclusionList() {
+        return exclusionList.stream()
+                .map(ExclusionList::compilePattern)
+                .collect(Collectors.toList());
+    }
+
+    private static Pattern compilePattern(String pattern) {
+        return Pattern.compile("\\b" + pattern.trim().toUpperCase() + "\\b");
     }
 }
